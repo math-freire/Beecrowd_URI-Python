@@ -1,13 +1,13 @@
 # https://www.beecrowd.com.br/judge/pt/problems/view/1042
 
 a, b, c = map(int, input().split())
-valores = [a, b, c]
+v = [a, b, c]
 maior, menor, central = a, a, 0
 
-for i in range(3):
-    for j in range(3):
-        if valores[i] > valores[j]:
-            maior = valores[i]
-        if valores[i] < valores[j]:
-            menor = valores[i]
+for i in range(2):
+    if v[i] > v[i+1]:
+        maior = v[i]
+    elif v[i] < v[i+1]:
 
+
+print('{}\n{}\n{}\n\n{}\n{}\n{}'.format(menor, central, maior, a, b, c))
