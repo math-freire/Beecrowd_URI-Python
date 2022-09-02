@@ -1,13 +1,14 @@
-# https://www.beecrowd.com.br/judge/pt/problems/view/1042
+# https://www.beecrowd.com.br/judge/pt/runs/code/29601063
 
-a, b, c = map(int, input().split())
-v = [a, b, c]
-maior, menor, central = a, a, 0
+valores = list(map(int, input().split()))
 
-for i in range(2):
-    if v[i] > v[i+1]:
-        maior = v[i]
-    elif v[i] < v[i+1]:
+valores_c = valores.copy()  # Sem o copy iria mexer nas duas listas ao mesmo tempo
+valores_c.sort()
 
+for valor in valores_c:
+    print(valor)
 
-print('{}\n{}\n{}\n\n{}\n{}\n{}'.format(menor, central, maior, a, b, c))
+print("")
+
+for valor in valores:
+    print(valor)
