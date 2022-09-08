@@ -2,16 +2,20 @@ def dec_to_bin(number_to_convert, binary_list):
     while number_to_convert != 0:
         if number_to_convert % 2 == 0:
             binary_list.append(0)
-        elif number_to_convert % 2 != 0:
+        else:
             binary_list.append(1)
         number_to_convert //= 2
 
 
-def fill_binary_list(binary_list):
-    missing = 32 - len(binary_list)
-    for i in range(0, missing):
-        binary_list.append(0)
-    #  binary_list.reverse()
+def fill_binary_lists_equally(list1, list2):
+    if len(list1) > len(list2):
+        missing = len(list1) - len(list2)
+        for i in range(0, missing):
+            list2.append(0)
+    elif len(list1) < len(list2):
+        missing = len(list2) - len(list1)
+        for i in range(0, missing):
+            list1.append(0)
 
 
 def run_code(x, y):
@@ -22,30 +26,23 @@ def run_code(x, y):
     dec_to_bin(x, x_binaryList)
     dec_to_bin(y, y_binaryList)
 
-    # List with 32 positions of the binary number starting left to right (commented part on function)
-    fill_binary_list(x_binaryList)
-    fill_binary_list(y_binaryList)
+    # List with the same amount of positions for the binary numbers starting left to right (commented part on function)
+    fill_binary_lists_equally(x_binaryList, y_binaryList)
 
     # print('Antes\n{}\n{}'.format(x_binaryList, y_binaryList))
-
-    # Creates a list for keeping the binary results and fills it with 0 (zeros)
     binary_res = []
-    fill_binary_list(binary_res)
-
     # Calculates 'Mofiz' binary code
-    for i in range(0, 32):
-        if x_binaryList[i] == 1 and y_binaryList[i] == 1:
-            binary_res[i] = 0
-        elif x_binaryList[i] == 1 and y_binaryList[i] == 0 or x_binaryList[i] == 0 and y_binaryList[i] == 1:
-            binary_res[i] = 1
-        # If it's 0 and 0, nothing changes.
+    for i in range(0, len(x_binaryList)):
+        if x_binaryList[i] == 1 and y_binaryList[i] == 0 or x_binaryList[i] == 0 and y_binaryList[i] == 1:
+            binary_res.append(1)
+        else:
+            binary_res.append(0)
 
     # print('Res\n{}'.format(binary_res))
     decimal_res = 0
-
-    for i in range(0, 32):
+    for i in range(0, len(binary_res)):
         if binary_res[i] == 1:
-            decimal_res += pow(2, i)
+            decimal_res += 2 ** i
 
     # print('Decimal results:', decimal_res)
     print(decimal_res)
