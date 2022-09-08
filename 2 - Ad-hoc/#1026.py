@@ -48,7 +48,7 @@ def run_code(x, y):
     print(decimal_res)
 
 
-# Reading entries from Beecrowd/URI
+# Reading entries from Beecrowd/URI until EOF
 while True:
     try:
         x, y = map(int, input().split())
